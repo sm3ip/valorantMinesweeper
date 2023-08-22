@@ -25,7 +25,7 @@ public class Gameplan : MonoBehaviour
     private int _amountBombs; // the amount of bombs in the current game (feature is yet to be implemented)
     public GameObject tile; // the prefab of the tiles to generate the grid
     public GameObject track; // to track it and give it a name
-    public GameObject canvas;
+    public GameObject canvas; // the ui containing the option to restart and difficulty options
     public GameObject victoryScene;
     public GameObject loseScene;
     public Vector3 origin; // the beginning of the grid
