@@ -19,8 +19,7 @@ public class Gameplan : MonoBehaviour
     }
     
     //vars
-    private int[,] dataTab = new int[16, 16]; // contains the numbers corresponding to the amount of nearest mines (-1 means that there's a bomb)
-    private int[,] stateTab = new int[16, 16]; // 1 if hidden, 2 if discovered, 0 if flagged
+    
     private System.Random rnd = new System.Random(); // a random generator
     private int _amountBombs; // the amount of bombs in the current game (feature is yet to be implemented)
     public GameObject tile; // the prefab of the tiles to generate the grid
@@ -33,16 +32,25 @@ public class Gameplan : MonoBehaviour
     public float marginZ; // the margin in the Z-axis between the tiles
     private Coords _startClick; // the tile uncovered by the system to begin a game
     public int difficultyLvl = 13;
+
+    public int nbHeight;
+    public int nbWidth;
+    private int[,] dataTab;
+    private int[,] stateTab;
         
     // Start is called before the first frame update
     void Start()
     {
+        
         _startClick = new Coords(0, 0); // sets it as the first tile
+        
+        dataTab = new int[nbHeight, nbWidth]; // contains the numbers corresponding to the amount of nearest mines (-1 means that there's a bomb)
+        stateTab = new int[nbHeight, nbWidth]; // 1 if hidden, 2 if discovered, 0 if flagged
         Vector3 tmpOri = origin; // create a temporary origin for modification purposes
         // goes through the grid to instantiate the tiles
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < nbHeight; i++)
         {
-            for (int j = 0; j < 16; j++)
+            for (int j = 0; j < nbWidth; j++)
             {
                 track = Instantiate(tile, tmpOri, Quaternion.identity);
                 track.name = "tile_" + i + ":" + j;
@@ -56,9 +64,9 @@ public class Gameplan : MonoBehaviour
 
     public void RestartGame()
     {
-        for (int i = 0; i < 16; i++) // resets the material for each tile
+        for (int i = 0; i < nbHeight; i++) // resets the material for each tile
         {
-            for (int j = 0; j < 16; j++)
+            for (int j = 0; j < nbWidth; j++)
             {
                 GameObject Tile = GameObject.Find("tile_" + i + ":" + j);
                 Tile.GetComponent<TileActor>().SetDefMat();
@@ -77,9 +85,9 @@ public class Gameplan : MonoBehaviour
         // setups the multiple variables to start a game
         //setup of bombs
         _amountBombs = 0;
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < nbHeight; i++)
         {
-            for (int j = 0; j < 16; j++)
+            for (int j = 0; j < nbWidth; j++)
             {
                 dataTab[i, j] = 0;
                 stateTab[i, j] = 1; // everything is set as hidden
@@ -93,9 +101,9 @@ public class Gameplan : MonoBehaviour
         }
         
         //setup of numbers (close bombs)
-        for (int i = 0; i < 16; i++) // goes through the lines
+        for (int i = 0; i < nbHeight; i++) // goes through the lines
         {
-            for (int j = 0; j < 16; j++) // goes through the columns
+            for (int j = 0; j < nbWidth; j++) // goes through the columns
             {
                 GameObject tileOnScene = GameObject.Find("tile_" + i + ":" + j); // finds the corresponding tile in the scene
                 if (dataTab[i,j]!=-1) // if it aint a mine
@@ -123,12 +131,12 @@ public class Gameplan : MonoBehaviour
         int result = 0;
         for (int k = x-1; k < x+2; k++) // goes through the lines before present and after
         {
-            if (k<16 && k>=0) // if it aint out of bounds
+            if (k<nbHeight && k>=0) // if it aint out of bounds
             {
                 //check the line of 3
                 for (int l = y-1; l < y+2; l++) // goes through the columns before present and after
                 {
-                    if (l<16 && l>=0) // if it aint out of bounds
+                    if (l<nbWidth && l>=0) // if it aint out of bounds
                     {
                         if (dataTab[k,l]==-1) // if its a bomb add it to the counter
                         {
@@ -156,12 +164,12 @@ public class Gameplan : MonoBehaviour
                 // uncovers every near tile
                 for (int k = x-1; k < x+2; k++) // goes through the lines before present and after
                 {
-                    if (k<16 && k>=0) // if it aint out of bounds
+                    if (k<nbHeight && k>=0) // if it aint out of bounds
                     {
                         //check the line of 3
                         for (int l = y-1; l < y+2; l++) // goes through the columns before present and after
                         {
-                            if (l<16 && l>=0) // if it aint out of bounds
+                            if (l<nbWidth && l>=0) // if it aint out of bounds
                             {
                                 stateTab[k, l] = 2;
                                 GameObject.Find("tile_" + k + ":" + l).GetComponent<TileActor>().OnClickAction();
@@ -198,12 +206,12 @@ public class Gameplan : MonoBehaviour
         List<Coords> toReDomino = new List<Coords>();
         for (int k = x-1; k < x+2; k++) // goes through the lines before present and after
         {
-            if (k<16 && k>=0) // if it aint out of bounds
+            if (k<nbHeight && k>=0) // if it aint out of bounds
             {
                 //check the line of 3
                 for (int l = y-1; l < y+2; l++) // goes through the columns before present and after
                 {
-                    if (l<16 && l>=0) // if it aint out of bounds
+                    if (l<nbWidth && l>=0) // if it aint out of bounds
                     {
                         
                         if (dataTab[k,l]==0 && stateTab[k,l]!=2)
@@ -244,9 +252,9 @@ public class Gameplan : MonoBehaviour
     public bool hasWon()
     {
         // checks if the player has won ( might modify the conditions, not sure tho)
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < nbHeight; i++)
         {
-            for (int j = 0; j < 16; j++)
+            for (int j = 0; j < nbWidth; j++)
             {
                 if (stateTab[i,j]!=2 && dataTab[i,j] != -1)
                 {
