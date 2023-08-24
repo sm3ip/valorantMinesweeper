@@ -634,9 +634,9 @@ MonoBehaviour:
   canvas: {fileID: 1917141136}
   victoryScene: {fileID: 1325340200}
   loseScene: {fileID: 1722845617}
-  origin: {x: -3.5, y: 2.740623, z: -5.5}
-  marginX: 0.6
-  marginZ: -0.6
+  origin: {x: -7, y: 2.740623, z: -4.7}
+  marginX: 1.1
+  marginZ: -0.7
   difficultyLvl: 15
 --- !u!114 &519420034
 MonoBehaviour:
