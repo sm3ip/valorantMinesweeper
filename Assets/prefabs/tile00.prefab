@@ -229,19 +229,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3103a7e98ef7ad48b51f11541e94c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMaterial: {fileID: 2100000, guid: d3802b9f88344d7498a5c34086867033, type: 2}
+  defaultMaterial: {fileID: 2100000, guid: 851923298cf76024ab12b8ed7caaf2e0, type: 2}
   amountBombMats:
-  - {fileID: 2100000, guid: 3f19344ecb63022418c90612f13733f7, type: 2}
-  - {fileID: 2100000, guid: b07ca76df7ea28e4faf739b7c066836d, type: 2}
-  - {fileID: 2100000, guid: 18a1d09724c943b4ead413967dee6d68, type: 2}
-  - {fileID: 2100000, guid: 8651bb94032f67346981032199358fbe, type: 2}
-  - {fileID: 2100000, guid: 02ceaf526f6a6ed42a62553efdfe2388, type: 2}
-  - {fileID: 2100000, guid: e18e288a8af5e7345b41f2d838eda4f3, type: 2}
-  - {fileID: 2100000, guid: 4f6d0515de2135340a7704482f961697, type: 2}
-  - {fileID: 2100000, guid: 80646242346aa7c45b40fec67fc51c22, type: 2}
-  - {fileID: 2100000, guid: 23e6ef6fd8cbb274bacc3db8ce142422, type: 2}
+  - {fileID: 2100000, guid: dfbadea85ce57f243b0377035f01b92d, type: 2}
+  - {fileID: 2100000, guid: c29a6354578b30b4c87303ecbf0c3f1a, type: 2}
+  - {fileID: 2100000, guid: aadb6460c988625478e0254a29d1017e, type: 2}
+  - {fileID: 2100000, guid: 3c045cb3ecdc98047847dce9ef79e5ab, type: 2}
+  - {fileID: 2100000, guid: 689742163fedcf94e9beec6790a48f81, type: 2}
+  - {fileID: 2100000, guid: 950f5fe3bc0c11d47bdf73d449f1e7bc, type: 2}
+  - {fileID: 2100000, guid: 8001f57cf15cf1e41a431d302fce3048, type: 2}
+  - {fileID: 2100000, guid: 168f6fc4bc4340e42bb519dfe432b065, type: 2}
+  - {fileID: 2100000, guid: 8f081b54d54f1464185e49175b997044, type: 2}
   - {fileID: 2100000, guid: 7edf1548815cd8e44ba57b4ad8a8866d, type: 2}
-  - {fileID: 2100000, guid: 3b88ad500647f2c4388be875344411c2, type: 2}
+  - {fileID: 2100000, guid: 851923298cf76024ab12b8ed7caaf2e0, type: 2}
   spikeExplo: {fileID: 8154799005038879800, guid: 570f66fb7563c3b43a0b604cba94d6d5, type: 3}
   hasExploded: 0
   valueOfTheTile: 0

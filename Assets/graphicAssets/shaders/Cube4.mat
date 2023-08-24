@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5241570014184685977
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 7
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -20,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: cubeFlaggedMat
-  m_Shader: {fileID: -6465566751694194690, guid: 6193bc79c2c03164b80ff9b3f4cbd744, type: 3}
+  m_Name: Cube4
+  m_Shader: {fileID: -6465566751694194690, guid: 2aa1d7b4a8f56d245be5eb7b90507b3d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -36,12 +23,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: b115b274e4a78c641a4818182688bf9c, type: 3}
+    - _Normal_map:
+        m_Texture: {fileID: 2800000, guid: 0f43ad8b7a657d1459aa60aab88ddb90, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _baseText:
-        m_Texture: {fileID: 2800000, guid: 316b3515eb86c0f498246f5d615d64d3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0f43ad8b7a657d1459aa60aab88ddb90, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _emission:
+        m_Texture: {fileID: 2800000, guid: 9a0968b55b4fe52418d1a5248ca400a8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -62,3 +53,16 @@ Material:
     - _QueueOffset: 0
     m_Colors: []
   m_BuildTextureStacks: []
+--- !u!114 &7726168790520334120
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
