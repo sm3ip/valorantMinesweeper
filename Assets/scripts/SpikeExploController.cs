@@ -14,11 +14,10 @@ public class SpikeExploController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scaleChange = new Vector3(0.005f, 0.005f, 0.005f);
+        //scaleChange = new Vector3(0.005f, 0.005f, 0.005f);
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (gameObject.transform.localScale.y < maxSize)
         {
