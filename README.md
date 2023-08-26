@@ -3,6 +3,7 @@
 ## TODO LIST
 here's all that remains to do before the game can be considered as "complete"
 
+### TODO
 - bomb counter
 - flag counter (those used to compare with the bombs)
 - recognize which difficulty level is currently on (visual cue)
@@ -11,3 +12,5 @@ here's all that remains to do before the game can be considered as "complete"
 - animate victory and defeat screen
 - graphic asset for the retry button
 - winstreak (find a way to differentiate difficulty)
+
+### DONE
