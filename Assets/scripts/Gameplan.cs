@@ -37,6 +37,7 @@ public class Gameplan : MonoBehaviour
     public int nbWidth;
     private int[,] dataTab;
     private int[,] stateTab;
+    public GameObject bombText;
         
     // Start is called before the first frame update
     void Start()
@@ -123,6 +124,8 @@ public class Gameplan : MonoBehaviour
                 }
             }
         }
+
+        bombText.GetComponent<TMPro.TextMeshProUGUI>().text = _amountBombs.ToString() + " mines";
     }
 
     public int seekBombs(int x, int y)
