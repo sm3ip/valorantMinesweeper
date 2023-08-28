@@ -38,6 +38,8 @@ public class Gameplan : MonoBehaviour
     private int[,] dataTab;
     private int[,] stateTab;
     public GameObject bombText;
+    public GameObject flagText;
+    private int flagsUsed;
         
     // Start is called before the first frame update
     void Start()
@@ -86,6 +88,7 @@ public class Gameplan : MonoBehaviour
         // setups the multiple variables to start a game
         //setup of bombs
         _amountBombs = 0;
+        flagsUsed = 0;
         for (int i = 0; i < nbHeight; i++)
         {
             for (int j = 0; j < nbWidth; j++)
@@ -126,6 +129,7 @@ public class Gameplan : MonoBehaviour
         }
 
         bombText.GetComponent<TMPro.TextMeshProUGUI>().text = _amountBombs.ToString() + " mines";
+        flagText.GetComponent<TMPro.TextMeshProUGUI>().text = flagsUsed.ToString() + " flags used";
     }
 
     public int seekBombs(int x, int y)
@@ -244,10 +248,14 @@ public class Gameplan : MonoBehaviour
             case 1: // if hidden flag it
                 stateTab[x, y] = 0;
                 GameObject.Find("tile_" + x + ":" + y).GetComponent<TileActor>().FlagTheTile();
+                flagsUsed += 1;
+                flagText.GetComponent<TMPro.TextMeshProUGUI>().text = flagsUsed.ToString() + " flags used";
                 break;
             case 0: // if flagged hides it
                 stateTab[x, y] = 1;
                 GameObject.Find("tile_" + x + ":" + y).GetComponent<TileActor>().UnFlagTheTile();
+                flagsUsed -= 1;
+                flagText.GetComponent<TMPro.TextMeshProUGUI>().text = flagsUsed.ToString() + " flags used";
                 break;
         }
     }
