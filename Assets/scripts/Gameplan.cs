@@ -39,6 +39,9 @@ public class Gameplan : MonoBehaviour
     private int[,] stateTab;
     public GameObject bombText;
     public GameObject flagText;
+    public GameObject buttonDiff1;
+    public GameObject buttonDiff2;
+    public GameObject buttonDiff3;
     private int flagsUsed;
         
     // Start is called before the first frame update
@@ -278,9 +281,26 @@ public class Gameplan : MonoBehaviour
 
     public void DifficultyChange(int n)
     {
-        if (n>4)
+        switch (n)
         {
-            difficultyLvl = n;
+            case 1:
+                difficultyLvl = 13;
+                buttonDiff1.transform.GetChild(1).gameObject.SetActive(true);
+                buttonDiff2.transform.GetChild(1).gameObject.SetActive(false);
+                buttonDiff3.transform.GetChild(1).gameObject.SetActive(false);
+                break;
+            case 2:
+                difficultyLvl = 8;
+                buttonDiff1.transform.GetChild(1).gameObject.SetActive(false);
+                buttonDiff2.transform.GetChild(1).gameObject.SetActive(true);
+                buttonDiff3.transform.GetChild(1).gameObject.SetActive(false);
+                break;
+            case 3:
+                difficultyLvl = 5;
+                buttonDiff1.transform.GetChild(1).gameObject.SetActive(false);
+                buttonDiff2.transform.GetChild(1).gameObject.SetActive(false);
+                buttonDiff3.transform.GetChild(1).gameObject.SetActive(true);
+                break;
         }
     }
 
