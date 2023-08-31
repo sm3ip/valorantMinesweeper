@@ -131,8 +131,8 @@ public class Gameplan : MonoBehaviour
             }
         }
 
-        bombText.GetComponent<TMPro.TextMeshProUGUI>().text = _amountBombs.ToString() + " mines";
-        flagText.GetComponent<TMPro.TextMeshProUGUI>().text = flagsUsed.ToString() + " flags used";
+        bombText.GetComponent<TMPro.TextMeshProUGUI>().text = _amountBombs.ToString();
+        flagText.GetComponent<TMPro.TextMeshProUGUI>().text = flagsUsed.ToString();
     }
 
     public int seekBombs(int x, int y)
@@ -252,13 +252,13 @@ public class Gameplan : MonoBehaviour
                 stateTab[x, y] = 0;
                 GameObject.Find("tile_" + x + ":" + y).GetComponent<TileActor>().FlagTheTile();
                 flagsUsed += 1;
-                flagText.GetComponent<TMPro.TextMeshProUGUI>().text = flagsUsed.ToString() + " flags used";
+                flagText.GetComponent<TMPro.TextMeshProUGUI>().text = flagsUsed.ToString();
                 break;
             case 0: // if flagged hides it
                 stateTab[x, y] = 1;
                 GameObject.Find("tile_" + x + ":" + y).GetComponent<TileActor>().UnFlagTheTile();
                 flagsUsed -= 1;
-                flagText.GetComponent<TMPro.TextMeshProUGUI>().text = flagsUsed.ToString() + " flags used";
+                flagText.GetComponent<TMPro.TextMeshProUGUI>().text = flagsUsed.ToString();
                 break;
         }
     }
