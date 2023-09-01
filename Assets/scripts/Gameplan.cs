@@ -42,12 +42,15 @@ public class Gameplan : MonoBehaviour
     public GameObject buttonDiff1;
     public GameObject buttonDiff2;
     public GameObject buttonDiff3;
+    public GameObject difficultyText;
+    public GameObject streakTxt;
+    private int _streak;
     private int flagsUsed;
         
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetStreak(0);
         _startClick = new Coords(0, 0); // sets it as the first tile
         
         dataTab = new int[nbHeight, nbWidth]; // contains the numbers corresponding to the amount of nearest mines (-1 means that there's a bomb)
@@ -284,28 +287,44 @@ public class Gameplan : MonoBehaviour
         switch (n)
         {
             case 1:
-                difficultyLvl = 13;
-                buttonDiff1.transform.GetChild(1).gameObject.SetActive(true);
-                buttonDiff2.transform.GetChild(1).gameObject.SetActive(false);
-                buttonDiff3.transform.GetChild(1).gameObject.SetActive(false);
+                if (difficultyLvl != 13)
+                {
+                    SetStreak(0);
+                    difficultyLvl = 13;
+                    buttonDiff1.transform.GetChild(1).gameObject.SetActive(true);
+                    buttonDiff2.transform.GetChild(1).gameObject.SetActive(false);
+                    buttonDiff3.transform.GetChild(1).gameObject.SetActive(false);
+                    difficultyText.GetComponent<TMPro.TextMeshProUGUI>().text = "Ez";
+                }
                 break;
             case 2:
-                difficultyLvl = 8;
-                buttonDiff1.transform.GetChild(1).gameObject.SetActive(false);
-                buttonDiff2.transform.GetChild(1).gameObject.SetActive(true);
-                buttonDiff3.transform.GetChild(1).gameObject.SetActive(false);
+                if (difficultyLvl !=8)
+                {
+                    SetStreak(0);
+                    difficultyLvl = 8;
+                    buttonDiff1.transform.GetChild(1).gameObject.SetActive(false);
+                    buttonDiff2.transform.GetChild(1).gameObject.SetActive(true);
+                    buttonDiff3.transform.GetChild(1).gameObject.SetActive(false);
+                    difficultyText.GetComponent<TMPro.TextMeshProUGUI>().text = "Moderate";
+                }
                 break;
             case 3:
-                difficultyLvl = 5;
-                buttonDiff1.transform.GetChild(1).gameObject.SetActive(false);
-                buttonDiff2.transform.GetChild(1).gameObject.SetActive(false);
-                buttonDiff3.transform.GetChild(1).gameObject.SetActive(true);
+                if (difficultyLvl!=5)
+                {
+                    SetStreak(0);
+                    difficultyLvl = 5;
+                    buttonDiff1.transform.GetChild(1).gameObject.SetActive(false);
+                    buttonDiff2.transform.GetChild(1).gameObject.SetActive(false);
+                    buttonDiff3.transform.GetChild(1).gameObject.SetActive(true);
+                    difficultyText.GetComponent<TMPro.TextMeshProUGUI>().text = "Hard";
+                }
                 break;
         }
     }
 
     public void OnLost()
     {
+        SetStreak(0);
         gameObject.GetComponent<RaycastTile>().canPlay = false;
         canvas.SetActive(true);
         victoryScene.SetActive(false);
@@ -313,8 +332,15 @@ public class Gameplan : MonoBehaviour
 
     public void OnVictory()
     {
+        SetStreak(_streak+1);
         gameObject.GetComponent<RaycastTile>().canPlay = false;
         canvas.SetActive(true);
         loseScene.SetActive(false);
+    }
+
+    public void SetStreak(int i)
+    {
+        _streak = i;
+        streakTxt.GetComponent<TMPro.TextMeshProUGUI>().text = _streak.ToString() + " in a row";
     }
 }
