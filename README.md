@@ -5,8 +5,7 @@ here's all that remains to do before the game can be considered as "complete"
 
 ### TODO
 
-- winstreak (find a way to differentiate difficulty)
-- show current difficulty
+
 
 ### DONE
 - bomb counter
@@ -14,3 +13,5 @@ here's all that remains to do before the game can be considered as "complete"
 - recognize which difficulty level is currently on (visual cue)
 - graphic assets for the difficulty levels (3)
 - graphic assets for victory and defeat screen
+- winstreak (find a way to differentiate difficulty)
+- show current difficulty
