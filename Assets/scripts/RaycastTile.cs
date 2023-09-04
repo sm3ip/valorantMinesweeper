@@ -9,6 +9,7 @@ public class RaycastTile : MonoBehaviour
     private Ray ray; // the raycast
     private RaycastHit hit; // the object hit by the raycast
     public bool canPlay = true;
+    public bool isFlag = false;
 
     // Update is called once per frame
     void Update()
@@ -20,17 +21,21 @@ public class RaycastTile : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Tile") && canPlay) // if the object hit by the raycast has the tag Tile
                 {
-                    Gameplan.Coords temp = ParseTileCoords(hit.collider.name); // gets the tile's coordinates from its name
-                    gameObject.GetComponent<Gameplan>().uncoverTileUSER(temp.X,temp.Y); // calls the function to "uncover" the corresponding tile
+                    Gameplan.Coords
+                        temp = ParseTileCoords(hit.collider.name); // gets the tile's coordinates from its name
+                    if (isFlag)
+                    {
+                        gameObject.GetComponent<Gameplan>()
+                            .flagIt(temp.X, temp.Y); // calls the function to "flag" the corresponding tile
+                    }
+                    else
+                    {
+                        gameObject.GetComponent<Gameplan>()
+                            .uncoverTileUSER(temp.X, temp.Y); // calls the function to "uncover" the corresponding tile
+                    }
+
                 }
-                
-            }else if (Input.GetMouseButtonDown(1)) // in case of a right click
-            {
-                if (hit.collider.CompareTag("Tile") && canPlay) // if the object hit by the raycast has the tag Tile
-                {
-                    Gameplan.Coords temp = ParseTileCoords(hit.collider.name); // gets the tile's coordinates from its name
-                    gameObject.GetComponent<Gameplan>().flagIt(temp.X,temp.Y); // calls the function to "flag" the corresponding tile
-                }
+
             }
         }
     }
@@ -40,5 +45,10 @@ public class RaycastTile : MonoBehaviour
         // Parses the tile's name into its actual coordinates
         return new Gameplan.Coords(Int32.Parse(name.Substring(5, name.IndexOf(":") - 5)),
             Int32.Parse(name.Substring(name.IndexOf(":") + 1)));
+    }
+
+    public void SwitchFlag()
+    {
+        isFlag = !isFlag;
     }
 }
